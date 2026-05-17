@@ -2,7 +2,7 @@
 
 > **Next-Generation AI-Powered Financial Intelligence Operating System**
 
-**Designed, Created and Developed by Anshuman Jha**
+**Designed and Developed by Anshuman Jha**
 **Brainchild of Anshuman Kr Jha**
 
 ---
