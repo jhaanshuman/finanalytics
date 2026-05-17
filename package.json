@@ -1,0 +1,166 @@
+{
+  "name": "finanalytics",
+  "version": "1.0.0",
+  "description": "FinAnalytics - Next-Generation AI-Powered Financial Intelligence Operating System. Designed, Created and Developed by Anshuman Jha. Brainchild of Anshuman Kr Jha.",
+  "main": "electron/main.js",
+  "author": "Anshuman Jha <anshuman@finanalytics.ai>",
+  "license": "Proprietary",
+
+  "scripts": {
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+
+    "client:dev": "vite --host",
+
+    "server:dev": "nodemon server/index.js",
+
+    "build": "vite build",
+
+    "electron:dev": "concurrently \"npm run server:dev\" \"npm run client:dev\" \"wait-on http://localhost:5173 && electron .\"",
+
+    "electron:build": "npm run build && electron-builder",
+
+    "electron:pack": "electron-builder --dir",
+
+    "dist": "npm run build && electron-builder",
+
+    "test": "vitest",
+
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+
+    "db:migrate": "node database/migrate.js",
+
+    "db:seed": "node database/seed.js"
+  },
+
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.23.1",
+    "zustand": "^4.5.2",
+    "framer-motion": "^11.2.4",
+    "tailwindcss": "^3.4.4",
+    "@tailwindcss/forms": "^0.5.7",
+    "d3": "^7.9.0",
+    "chart.js": "^4.4.3",
+    "react-chartjs-2": "^5.2.0",
+    "three": "^0.164.1",
+    "@react-three/fiber": "^8.16.6",
+    "@react-three/drei": "^9.105.6",
+    "lucide-react": "^0.378.0",
+    "date-fns": "^3.6.0",
+    "react-grid-layout": "^1.4.4",
+    "react-resizable-panels": "^2.0.19",
+    "react-hot-toast": "^2.4.1",
+    "react-query": "^3.39.3",
+    "axios": "^1.7.2",
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "sqlite3": "^5.1.7",
+    "better-sqlite3": "^11.0.0",
+    "multer": "^1.4.5-lts.1",
+    "sharp": "^0.33.4",
+    "pdf-parse": "^1.1.1",
+    "xlsx": "^0.18.5",
+    "csv-parser": "^3.0.0",
+    "crypto-js": "^4.2.0",
+    "uuid": "^9.0.1",
+    "node-cron": "^3.0.3",
+    "winston": "^3.13.0",
+    "electron-store": "^8.2.0",
+    "electron-updater": "^6.2.1",
+    "electron-log": "^5.1.5",
+    "electron-context-menu": "^3.6.1",
+    "electron-window-state": "^5.0.3",
+    "fuse.js": "^7.0.0",
+    "recharts": "^2.12.7",
+    "vis-network": "^9.1.9",
+    "vis-data": "^7.1.9",
+    "natural": "^7.0.6",
+    "compromise": "^14.13.0",
+    "simple-statistics": "^7.8.3",
+    "ml-regression": "^6.0.1",
+    "compute-cosine-similarity": "^1.1.0"
+  },
+
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "vite": "^5.2.12",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.2",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "typescript": "^5.4.5",
+    "electron": "^30.0.8",
+    "electron-builder": "^24.13.3",
+    "concurrently": "^8.2.2",
+    "wait-on": "^7.2.0",
+    "nodemon": "^3.1.2",
+    "vitest": "^1.6.0",
+    "@testing-library/react": "^15.0.7",
+    "@testing-library/jest-dom": "^6.4.6"
+  },
+
+  "build": {
+    "appId": "com.anshumanjha.finanalytics",
+
+    "productName": "FinAnalytics",
+
+    "directories": {
+      "output": "dist-electron"
+    },
+
+    "files": [
+      "dist/**/*",
+      "server/**/*",
+      "database/**/*",
+      "electron/**/*",
+      "node_modules/**/*"
+    ],
+
+    "extraResources": [
+      {
+        "from": "database/",
+        "to": "database/"
+      }
+    ],
+
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+
+      "icon": "src/assets/icon.ico",
+
+      "publisherName": "Anshuman Jha"
+    },
+
+    "nsis": {
+      "oneClick": false,
+
+      "allowToChangeInstallationDirectory": true,
+
+      "createDesktopShortcut": true,
+
+      "createStartMenuShortcut": true,
+
+      "shortcutName": "FinAnalytics"
+    },
+
+    "portable": {
+      "artifactName": "FinAnalytics-Portable-${version}.exe"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+# 1. Extract the zip
+cd finanalytics
+
+# 2. Install dependencies
+npm install
+
+# 3. Start web development
+npm run dev
+
+# 4. Or start desktop development
+npm run electron:dev
+
+# 5. Initialize database
+npm run db:migrate
+npm run db:seed
+
+# 6. Build for production
+npm run build
+
+# 7. Package as EXE
+npm run dist
